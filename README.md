@@ -70,11 +70,3 @@ Through this project, I learned:
 * Data Storage using Files or Database
 * GUI Interface using Tkinter
 * OTP-Based Authentication
-
-## Author
-
-Prabhavathi
-
-## License
-
-This project is created for educational and learning purposes.
