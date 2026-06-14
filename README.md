@@ -1,75 +1,71 @@
-# ATM Machine Simulation Using Python
+class ATM:
+    def __init__(self):
+        self.pin = 1234
+        self.balance = 5000
 
-## Overview
+    def withdraw(self):
+        amount = int(input("Enter withdrawal amount: "))
+        if amount <= self.balance:
+            self.balance -= amount
+            print("Withdrawal Successful")
+            print("Current Balance:", self.balance)
+        else:
+            print("Insufficient Balance")
 
-This is a simple ATM Machine Simulation project developed using Python and Object-Oriented Programming (OOP) concepts. The project allows users to perform basic banking operations such as withdrawing money, depositing money, checking account balance, and changing the ATM PIN.
+    def deposit(self):
+        amount = int(input("Enter deposit amount: "))
+        self.balance += amount
+        print("Deposit Successful")
+        print("Current Balance:", self.balance)
 
-## Features
+    def change_pin(self):
+        new_pin = int(input("Enter new PIN: "))
+        confirm_pin = int(input("Re-enter new PIN: "))
 
-* User PIN Authentication
-* Cash Withdrawal
-* Cash Deposit
-* Balance Inquiry
-* PIN Change Facility
-* Menu-Driven Interface
-* Object-Oriented Programming Implementation
+        if new_pin == confirm_pin:
+            self.pin = new_pin
+            print("PIN changed successfully")
+        else:
+            print("PINs do not match")
 
-## Technologies Used
-
-* Python 3
-* Object-Oriented Programming (OOP)
-
-## Project Structure
-
-* `ATM` Class
-
-  * `withdraw()` – Withdraw money from the account
-  * `deposit()` – Deposit money into the account
-  * `change_pin()` – Change ATM PIN
-  * `check_balance()` – Display current balance
-
-## How to Run
-
-1. Install Python 3 on your system.
-2. Download or clone this repository.
-3. Open the project folder.
-4. Run the Python file:
-
-```bash
-python atm.py
-```
-
-## Sample Login
-
-Default PIN: `1234`
-
-## Sample Operations
-
-* Withdraw Money
-* Deposit Money
-* Change PIN
-* Check Balance
-* Exit Application
-
-## Learning Outcomes
-
-Through this project, I learned:
-
-* Python Programming Fundamentals
-* Object-Oriented Programming Concepts
-* Class and Object Creation
-* Conditional Statements
-* Looping Structures
-* User Input Handling
-
-## Future Improvements
-
-* Multiple User Accounts
-* Transaction History
-* Account Number Authentication
-* Data Storage using Files or Database
-* GUI Interface using Tkinter
-* OTP-Based Authentication
+    def check_balance(self):
+        print("Current Balance:", self.balance)
 
 
+atm = ATM()
 
+password = int(input("Enter your PIN: "))
+
+if password ==atm.pin:
+
+    while True:
+        print(" CUB BANK ATM ")
+        print("1. Withdraw")
+        print("2. Deposit")
+        print("3. Change PIN")
+        print("4. Check Balance")
+        print("5. Exit")
+
+        choice = int(input("Enter your choice: "))
+
+        if choice == 1:
+            atm.withdraw()
+
+        elif choice == 2:
+            atm.deposit()
+
+        elif choice == 3:
+            atm.change_pin()
+
+        elif choice == 4:
+            atm.check_balance()
+
+        elif choice == 5:
+            print("Thank You for Using CUB Bank ATM")
+            break
+
+        else:
+            print("Invalid Choice. Please select 1 to 5.")
+
+else:
+    print("Incorrect PIN")
